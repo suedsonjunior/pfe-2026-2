@@ -8,7 +8,7 @@ export default function MiniBio() {
       
       {/* Exibe a sua frase de apresentação */}
       <p style={{ textAlign: 'center', marginTop: '12px' }}>
-        Estudante de Sistemas para Internet na UNICAP, focado em desenvolvimento web.
+        Estudante de Sistemas para Internet na UNICAP.
       </p>
     </div>
   );
