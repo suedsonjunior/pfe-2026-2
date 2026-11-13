@@ -7,46 +7,48 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const navItems = [
-    { name: 'Início', path: '/' },
-    { name: 'Sobre', path: '/sobre' },
-    { name: 'Acadêmica', path: '/academica' },
-    { name: 'Profissional', path: '/profissional' },
-    { name: 'Projetos', path: '/projetos' },
+    { name: 'Início', href: '/' },
+    { name: 'Sobre', href: '/sobre' },
+    { name: 'Acadêmica', href: '/academica' },
+    { name: 'Profissional', href: '/profissional' },
+    { name: 'Projetos', href: '/projetos' },
+    { name: 'APIs', href: '/api-testes' },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-lg">
-      <div className="max-w-5xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-        
-        {/* Logo / Nome */}
-        <Link 
-          href="/" 
-          className="text-xl font-black tracking-tight text-white hover:text-blue-400 transition-colors"
-        >
+    <header className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 text-white">
+      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+        <Link href="/" className="text-xl font-black tracking-tight">
           Suedson<span className="text-blue-500">.dev</span>
         </Link>
 
-        {/* Botões de Navegação */}
-        <nav className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+        <nav className="flex items-center gap-1 sm:gap-2 overflow-x-auto">
           {navItems.map((item) => {
-            const isActive = pathname === item.path;
-
+            const isActive = pathname === item.href;
             return (
               <Link
-                key={item.path}
-                href={item.path}
-                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 shadow-sm ${
+                key={item.href}
+                href={item.href}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
                   isActive
-                    ? 'bg-blue-600 text-white shadow-blue-500/30 ring-2 ring-blue-400/50 scale-105'
-                    : 'bg-slate-800 text-slate-200 border border-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-500 hover:-translate-y-0.5 hover:shadow-md'
+                    ? 'bg-blue-600 text-white shadow-sm shadow-blue-600/30'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
                 }`}
               >
                 {item.name}
               </Link>
             );
           })}
-        </nav>
 
+          <a
+            href="https://github.com/suedsonjunior"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2 px-3 py-1.5 rounded-lg text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all whitespace-nowrap"
+          >
+            GitHub ↗
+          </a>
+        </nav>
       </div>
     </header>
   );
